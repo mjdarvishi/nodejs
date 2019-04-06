@@ -1,0 +1,55 @@
+extends layout
+block head
+    title=title
+block content
+    table.table.table-bordered
+        thead
+            tr
+                th نام دسته
+                th عنوان
+                th متن
+                th حذف
+                th ویرایش
+        tbody
+            if posts
+                each post,i in posts
+                    .post
+                        tr
+                            td
+                                = post.cat
+                            td
+                                = post.title
+                            td  #{post.body}
+
+                            td.postdelete.delete(data-id=post._id)
+                                img(src="/images/delete.png")
+
+                            td.delete.editpost(data-id=post._id)
+                                img(src="/images/edit.png")
+
+                                script.
+                                    $(".postdelete").click(function () {
+                                        var current = $(this);
+                                        var id = current.attr("data-id");
+                                        $.post("/blog/delpost",
+                                            {
+                                                name: id
+                                            },
+                                            function (data, status) {
+                                                if (data) {
+                                                    current.parent().remove();
+
+                                                }
+                                            });
+                                    });
+                                    $(".editpost").click(function () {
+                                        var current = $(this);
+                                        var id = current.attr("data-id");
+                                        $(location).attr('href', '/blog/editpost/' + id);
+
+                                    });
+
+
+
+    a(href='/blog')
+        button.btn.btn-success(type='button') بازگشت

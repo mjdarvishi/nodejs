@@ -1,0 +1,53 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/foundation.css')
+    script(src='/javascripts/vendor/foundation.js')
+
+block head
+
+body
+    .top-bar
+        .top-bar-left
+            ul.dropdown.menu(data-dropdown-menu='')
+                li.menu-text BookShop
+
+                li
+                    a(href='/book') MainPage
+
+                li
+                    a(href='/book/cards') ShopingCard
+
+                if !user
+                    li
+                        a(href='/users') login
+                else
+                    li
+                        a(href='/users/logout') logout
+
+
+                if user
+                    if (user.status == 1)
+                        li
+                            a.button(href='/manage') Manage
+
+
+        .top-bar-right
+            ul.menu
+                form(action='/book/search' method='post')
+                    li
+                        input(type='text', placeholder='Search' name="search")
+                    |
+                    li
+                        button.button(type='submit') Search
+
+
+
+    block content
+
+
+
+
+

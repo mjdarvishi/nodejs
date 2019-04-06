@@ -1,0 +1,17 @@
+extends layout
+block head
+    title=title
+block content
+    .container
+        .title اضافه کردن دسته بندی جدید
+        form(action='/blog/editcat' method="post")
+            .row
+                .col-25
+                    label(for='fname') موضوع
+                .col-75
+                    input#fname(type='text', name='name', placeholder='موضوع.....' value=posts[0].name)
+                    input(type='hidden', name='id', placeholder='موضوع.....' value=posts[0]._id)
+            .row
+                input(type='submit', value='ارسال')
+    a(href='/blog')
+        button.btn.btn-success(type='button') بازگشت

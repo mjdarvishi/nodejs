@@ -1,0 +1,32 @@
+extends book
+block head
+    title=title
+block content
+    if basket
+        each item,i in basket
+            .row.align-center
+                .product-details.column.medium-6.center-text-for-small-only
+                    .product-details-add-to-cart
+                        .product-card-thumbnail
+                            img.detailbook(src=item.avatar)
+                        h1=item.title
+
+                        p
+                            span.in-stock num:
+                            |
+                            span.dim-text=item.num
+                        p
+                            span.in-stock price:
+                            |
+                            span.dim-text=item.price
+                        p
+                            span.in-stock totall price:
+                            |
+                        - var amount=item.price*item.num
+                        span.dim-text=amount
+
+        form(action="/#",method="post")
+            input.qty(type='hidden', value='' name='pro_id')
+            button(type='submit').button.expanded Pay
+
+

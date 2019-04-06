@@ -1,0 +1,19 @@
+extends layout
+block head
+    title=title
+block content
+    .left1
+        p نام:
+        p #{user.name}
+    .main1
+        p ایمیل:
+        p #{user.email}
+    .right1
+        p عکس پروفایل:
+
+        img.photo(src=user.avatar)
+        a(href='/')
+            button.btn.btn-success(type='button') بازگشت
+
+
+

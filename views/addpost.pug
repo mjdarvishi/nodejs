@@ -1,0 +1,34 @@
+extends layout
+block head
+    title=title
+block content
+    .container
+        .title اضافه کردن پست جدید
+        form(action='/blog/addpost' method="post")
+            .row
+                .col-25
+                    label(for='fname') موضوع
+                .col-75
+                    input#fname(type='text', name='title', placeholder='موضوع.....')
+            .row
+                .col-25
+                    label(for='country') دسته بنده
+                .col-75
+                    select#country(name='cat')
+                        if cat
+                            each post,i in cat
+                                .post
+                                    option(value=post.name) #{post.name}
+
+
+
+
+            .row
+                .col-25
+                    label(for='subject') متن
+                .col-75
+                    textarea#subject(name='text', placeholder='متن شما', style='height:200px')
+            .row
+                input(type='submit', value='ارسال')
+    a(href='/blog')
+        button.btn.btn-success(type='button') بازگشت

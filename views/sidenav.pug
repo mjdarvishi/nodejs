@@ -1,0 +1,32 @@
+doctype html
+html(lang='fa')
+    head
+        meta(charset='utf-8')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+        link(rel='stylesheet', href='/stylesheets/foundation.css')
+        script(src='/javascripts/vendor/foundation.js')
+
+    block head
+    body
+        .top-bar
+            .top-bar-left
+                ul.dropdown.menu(data-dropdown-menu)
+                    li.menu-text BookShop
+
+                    li
+                        a(href='/book') MainPage
+
+                    li
+                        a(href='#') Products
+                            |
+                            ul.menu.vertical.submenu
+                                li
+                                    a(href='/manage/showbook') show
+                                |
+                                li
+                                    a(href='/manage/addbook') add
+
+
+
+    block content

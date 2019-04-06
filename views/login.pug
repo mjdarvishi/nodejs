@@ -1,0 +1,47 @@
+extends layout
+block head
+    title=title
+block content
+    .container.login
+        .title ورود به سایت
+        form(action='/users' method="post")
+            .row
+                .col-25
+                    label(for='fnamelogin') نام کاربری
+                .col-75
+                    input#fnamelogin(type='text', name='username', placeholder='نام کاربری.....')
+            .row
+                .col-25
+                    label(for='emaillogin') رمز
+                .col-75
+                    input#emaillogin(type='text', name='password', placeholder='رمز  را وارد کنید ...')
+            .row
+                input(type='submit', value='ورود ')
+
+    .container.login.left
+        .title ثبت نام در سایت
+        form(action='/users/reg' method="post" enctype="multipart/form-data")
+            .row
+                .col-25
+                    label(for='fnamereg') نام کاربری
+                .col-75
+                    input#fnamereg(type='text', name='user', placeholder='نام کاربری.....')
+            .row
+                .col-25
+                    label(for='emailreg') رمز
+                .col-75
+                    input#emailreg(type='text', name='pass', placeholder='رمز  را وارد کنید ...')
+            .row
+                .col-25
+                    label(for='email') ایمیل
+                .col-75
+                    input#email(type='text', name='email' placeholder="ایمیل خور را وارد کنید..")
+
+            .row
+                .col-25
+                    label(for='image') افزودن عکس
+                .col-75
+                    input#image(type='file', name='avatar' value="افزودن")
+
+            .row
+                    input(type='submit', value='ثبت نام')

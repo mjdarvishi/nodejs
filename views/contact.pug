@@ -1,0 +1,24 @@
+extends layout
+block head
+    title=title
+block content
+    .container
+        .title ارسال ایمیل
+        form(action='/contact/send' method="post")
+            .row
+                .col-25
+                    label(for='fname') موضوع
+                .col-75
+                    input#fname(type='text', name='title', placeholder='موضوع.....')
+            .row
+                .col-25
+                    label(for='email') ایمیل
+                .col-75
+                    input#email(type='text', name='email', placeholder='ایمیل  را وارد کنید ...')
+            .row
+                .col-25
+                    label(for='subject') متن
+                .col-75
+                    textarea#subject(name='emailtext', placeholder='بیام شما', style='height:200px')
+            .row
+                input(type='submit', value='ارسال')

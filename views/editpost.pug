@@ -1,0 +1,35 @@
+extends layout
+block head
+    title=title
+block content
+    a(href='/blog')
+        button.btn.btn-success(type='button') Success
+    .container
+        .title ویرایش  پست
+        form(action='/blog/editpost' method="post")
+            .row
+                .col-25
+                    label(for='fname') موضوع
+                .col-75
+                    input#fname(type='text', name='title', placeholder='موضوع.....' value=posts[0].title)
+                    input(type='hidden', name='id', placeholder='موضوع.....' value=posts[0]._id)
+            .row
+                .col-25
+                    label(for='country') دسته بنده
+                .col-75
+                    select#country(name='cat')
+                        if cat
+                            each post,i in cat
+                                .post
+                                    option(value=post.name) #{post.name}
+
+
+
+
+            .row
+                .col-25
+                    label(for='subject') متن
+                .col-75
+                    textarea#subject(name='text', placeholder='متن شما', style='height:200px')= posts[0].body
+            .row
+                input(type='submit', value='ارسال')

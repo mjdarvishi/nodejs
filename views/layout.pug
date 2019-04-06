@@ -1,0 +1,29 @@
+doctype html
+html(lang='fa')
+    head
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+
+        block head
+    body
+    #myTopnav.topnav
+        if user
+            a(href='/users/logout') خروج
+        if !user
+            a(href='/users') ورود/ثبت نام
+        a(href='/') خانه
+        a(href='/contact') ارسال ایمیل
+        if user
+            a(href='/profile') پروفایل کاربری
+        a.icon(href='javascript:void(0);', onclick='myFunction()')
+            i.fa.fa-bars
+
+    block content
+
+
+
+
+

@@ -1,0 +1,68 @@
+block head
+        title=title
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+
+block content
+    table.table.table-bordered
+        thead
+            tr
+                th title
+                th category
+                th description
+                th auther
+                th publisher
+                th price
+                th amount
+                th dellet
+                th edit
+        tbody
+            if books
+                each book,i in books
+                    .post
+                        tr
+                            td
+                                = book.title
+                            td
+                                = book.cat
+                            td  #{book.body}
+                            td  #{book.auther}
+                            td  #{book.publisher}
+                            td  #{book.price}
+                            td  #{book.num}
+
+                            td.postdelete.delete(data-id=book._id)
+                                img(src="/images/delete.png")
+
+                            td.delete.editpost(data-id=book._id)
+                                img(src="/images/edit.png")
+
+                                script.
+                                    $(".postdelete").click(function () {
+                                        var current = $(this);
+                                        var id = current.attr("data-id");
+                                        $.post("/manage/dellbook",
+                                            {
+                                                name: id
+                                            },
+                                            function (data, status) {
+                                                if (data) {
+                                                    current.parent().remove();
+
+                                                }
+                                            });
+                                    });
+                                    $(".editpost").click(function () {
+                                        var current = $(this);
+                                        var id = current.attr("data-id");
+                                        $(location).attr('href', '/manage/editbook/' + id);
+
+                                    });
+
+
+
+    a(href='/manage')
+        button.btn.btn-success(type='button') back

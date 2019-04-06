@@ -1,0 +1,24 @@
+extends layout
+block head
+    title=title
+block content
+    ul
+        li
+            a(href="/blog/post")
+                img(src="/images/show.png")
+                span نمایش پست ها
+    ul
+        li
+            a(href="/blog/cat")
+                img(src="/images/show.png")
+                span نمایش دسته بندی ها
+    ul
+        li
+            a(href="/blog/addpost")
+                img(src="/images/add.png")
+                span اضافه کردن پست
+    ul
+        li
+            a(href="/blog/addcat")
+                img(src="/images/add.png")
+                span اضافه کردن دسته بندی جدید

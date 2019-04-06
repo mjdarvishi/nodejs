@@ -1,0 +1,39 @@
+{
+  "name": "node",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "*",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-message": "^1.2.3",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.1",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "moment": "^2.24.0",
+    "mongodb": "^3.2.2",
+    "mongoose": "^5.4.20",
+    "monk": "^6.0.6",
+    "morgan": "~1.9.0",
+    "multer": "^1.4.1",
+    "mysql": "^2.16.0",
+    "nodemailer": "*",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "pug": "*",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "ultron": "^1.1.1"
+  }
+}

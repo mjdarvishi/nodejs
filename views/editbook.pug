@@ -1,0 +1,45 @@
+block head
+    title=title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+block content
+    a(href='/manage/showbook')
+        button.btn.btn-success(type='button') back
+    .container
+        .title ویرایش  پست
+        form(action='/manage/editbook' method="post")
+            .row
+                .col-25
+                    label(for='fname') title
+                .col-75
+                    input#fname(type='text', name='title', placeholder='title.....' value=book.title)
+                    input(type='hidden', name='id', placeholder='title.....' value=book._id)
+            .row
+                .col-25
+                    label(for='cat') category
+                    input#cat(type='text', name='cat', placeholder='cat.....' value=book.cat)
+            .row
+                .col-25
+                    label(for='price') price
+                    input#price(type='text', name='price', placeholder='price.....' value=book.price)
+            .row
+                .col-25
+                    label(for='auther') auther
+                    input#auther(type='text', name='auther', placeholder='cat.....' value=book.auther)
+            .row
+                .col-25
+                    label(for='publisher') publisher
+                    input#publisher(type='text', name='publisher', placeholder='publisher.....' value=book.publisher)
+            .row
+                .col-25
+                    label(for='num')  num
+                    input#num(type='text', name='num', placeholder='num.....' value=book.num)
+            .row
+                .col-25
+                    label(for='subject') description
+                .col-75
+                    textarea#subject(name='text', placeholder='your description', style='height:200px')= book.body
+            .row
+                input(type='submit', value='send')

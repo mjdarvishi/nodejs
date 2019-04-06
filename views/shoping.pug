@@ -1,0 +1,66 @@
+extends book
+block head
+    title=title
+block content
+    if book
+        each item,i in book
+            .product-card
+                .product-card-thumbnail
+                    a
+                        img.detailbook(src=item.avatar)
+                |
+                h2.product-card-title
+                    a= item.title
+                |
+                span.product-card-desc=sub(100,item.body)
+                |
+                span.product-card-price= item.price
+                span.product-card-sale=item.price
+                |
+                .product-card-colors
+                    a.button.btn(data-id=item._id) ReadMore
+    else
+        if name
+            each itemname,i in name
+                .product-card
+                    .product-card-thumbnail
+                        a
+                            img.detailbook(src=itemname.avatar)
+                    |
+                    h2.product-card-title
+                        a= itemname.title
+                    |
+                    span.product-card-desc=sub(100, itemname.description)
+                    |
+                    span.product-card-price= itemname.price
+                    span.product-card-sale=itemname.price
+                    |
+                    .product-card-colors
+                        a.button.btn(data-id=itemname._id) ReadMore
+
+        each itemcat,i in cat
+            .product-card
+                .product-card-thumbnail
+                    a
+                        img.detailbook(src=itemcat.avatar)
+                |
+                h2.product-card-title
+                    a= itemcat.title
+                |
+                span.product-card-desc=sub(100, itemcat.description)
+                |
+                span.product-card-price= itemcat.price
+                span.product-card-sale=itemcat.price
+                |
+                .product-card-colors
+                    a.button.btn(data-id=itemcat._id) ReadMore
+
+    script.
+        $(".btn").click(function () {
+            var current = $(this);
+            var id = current.attr("data-id");
+            $(location).attr('href', '/book/detail/' + id);
+
+        });
+
+

@@ -1,0 +1,32 @@
+extends main
+block head
+    title=title
+block content
+     each item,i in projects
+         .product-card
+             .product-card-thumbnail
+                 a
+                     img.detailbook(src=item.image)
+             |
+             h2.product-card-title
+                 span title:
+                 a=item.title
+             |
+             span.product-card-desc description:
+                span.product-card-desc=item.description
+             span.product-card-desc id:
+                span.product-card-desc=item.id
+             |
+             span.product-card-desc url:
+                span.product-card-desc=item.url
+             |
+             span.product-card-desc date:
+                span.product-card-desc=item.date
+             |
+             span.product-card-desc client:
+                span.product-card-desc=item.client
+             |
+             span.product-card-desc create-time:
+                span.product-card-desc=item.create-time
+             |
+

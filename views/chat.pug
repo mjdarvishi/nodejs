@@ -1,0 +1,115 @@
+doctype html
+html
+    head
+        title ChatIO
+        |
+        style.
+            body{
+                background: #f9f9f9;
+            }
+            #container{
+                width: 700px;
+                margin: 0 auto;
+            }
+            #chatWindow{
+                height: 300px;
+            }
+            #mainWrapper{
+                display: none;
+            }
+            #chatWrapper{
+                float: left;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                background: #f4f4f4;
+                padding: 10px;
+            }
+            #userWrapper{
+                float: left;
+                border: 1px #ccc solid;
+                border-radius: 5px;
+                background: #f4f4f4;
+                padding: 10px;
+                margin-left: 20px;
+                width: 150px;
+                max-height: 200px;
+            }
+            #nameWrapper{
+                float: left;
+                border: 1px solid #cccccc;
+                border-radius: 10px;
+                background: #f4f4f4;
+                padding: 10px;
+                margin-left: 20px;
+                /*display: none;*/
+            }
+            input{
+                height: 30px;
+            }
+    body
+        #container
+            #nameWrapper
+                h2 chatIO
+                |
+                p create Username :
+                |
+                #error
+                |
+                form#usernameForm
+                    input#username(type='text', name='username', size='35')
+                    |
+                    input(type='submit', name='', value='send')
+            |
+            #mainWrapper
+                h2 ChatIO
+                |
+                #chatWrapper
+                    #chatWindow
+                        form#messageForm
+                            input#message(type='text', name='username', placeholder='say something...', size='35')
+                            |
+                            input(type='submit', name='', value='send')
+                |
+                #userWrapper
+                    #users
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+        script(src='/socket.io/socket.io.js')
+        script.
+            $(function () {
+                var socket = io.connect();
+                var $messageForm = $('#messageForm');
+                var $message = $('#message');
+                var $chat = $('#chatWindow');
+                var $usernameForm = $('#usernameForm');
+                var $users = $('#users');
+                var $username = $('#username');
+                var $error = $('#error');
+                $usernameForm.submit(function (e) {
+                    e.preventDefault();
+                    socket.emit('new user',$username.val(),function (data) {
+                        if(data){
+                            $('#nameWrapper').hide();
+                            $('#mainWrapper').show();
+                        }else{
+                            $error.html('Username Is Taken...');
+                        }
+                    });
+                });
+                socket.on('usernames',function (data) {
+                    var html='';
+                    for (i=0;i<data.length;i++){
+                        html+=data[i] + '<br>';
+                    }
+                    $users.html(html);
+                });
+                $messageForm.submit(function (e) {
+                    e.preventDefault();
+                    console.log('Submitted...');
+                    socket.emit('send message',$message.val());
+                    $message.val('');
+                });
+                socket.on('new message',function (data) {
+                    // console.log(data.msg);
+                    $chat.append('<span style="color: red;">'+data.user+'</span> : '+data.msg+'<br>');
+                });
+            });

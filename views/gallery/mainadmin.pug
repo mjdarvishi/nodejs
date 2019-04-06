@@ -1,0 +1,31 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/foundation.css')
+    script(src='/javascripts/vendor/foundation.js')
+
+block head
+
+body
+    .top-bar
+        .top-bar-left
+            ul.dropdown.menu(data-dropdown-menu='')
+                li.menu-text Admin Page
+                li
+                    a(href='/gallery') MainPage
+
+                li
+                    a(href='/gallery/show') Show
+                li
+                    a(href='/gallery/add') Add
+
+
+
+    block content
+
+
+
+
+

@@ -1,0 +1,49 @@
+extends layout
+block head
+    title=title
+block content
+    table.table.table-bordered
+        thead
+            tr
+                th شماره ی دسته
+                th نام دسته
+                th حذف دسته
+                th ویرایش دسته
+        tbody
+            if posts
+                each post,i in posts
+                    .post
+                        tr
+                            td
+                                = post._id
+                            td
+                                = post.name
+                            td.delete.catdelete(data-id=post._id)
+                                img(src="/images/delete.png")
+                            td.delete.catedit(data-id=post._id)
+                                img(src="/images/edit.png")
+
+                                script.
+                                    $(".catdelete").click(function () {
+                                        var current = $(this);
+                                        var id = current.attr("data-id");
+                                        $.post("/blog/delcat",
+                                            {
+                                                name: id
+                                            },
+                                            function (data, status) {
+                                                if (data) {
+                                                    current.parent().remove();
+
+                                                }
+                                            });
+                                    });
+                                    $(".catedit").click(function () {
+                                        var current = $(this);
+                                        var id = current.attr("data-id");
+                                        $(location).attr('href', '/blog/editcat/' + id);
+
+                                    });
+
+    a(href='/blog')
+        button.btn.btn-success(type='button') بازگشت

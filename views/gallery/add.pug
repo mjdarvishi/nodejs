@@ -1,0 +1,34 @@
+extends mainadmin
+
+block head
+    title=title
+block content
+    form(action='/gallery/add' method='post' enctype="multipart/form-data")
+        .grid-container
+            .grid-x.grid-padding-x
+                .medium-6.cell
+                    label
+                        | title
+                        input(type='text', placeholder='title' name='title')
+                |
+                .medium-6.cell
+                    label
+                        | description
+                        input(type='text', placeholder='description' name='description')
+                .medium-6.cell
+                    label
+                        | client
+                        input(type='text', placeholder='client' name='client')
+                .medium-6.cell
+                    label
+                        | url
+                        input(type='text', placeholder='url' name='url')
+                .medium-6.cell
+                    label
+                        | date
+                        input(type='text', placeholder='mm/dd/yy' name='date1')
+                .medium-6.cell
+                    label
+                        | image
+                        input(type='file', placeholder='description' name='image')
+            button.button(type='submit') add

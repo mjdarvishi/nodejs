@@ -1,0 +1,36 @@
+extends book
+block head
+    title=title
+block content
+    .row.align-center
+        .product-details.column.medium-6.center-text-for-small-only
+            .product-details-add-to-cart
+                .product-card-thumbnail
+                        img.detailbook(src=book.avatar)
+                h1=book.title
+                p
+                    span.in-stock=book.cat
+                p.product-description=book.body
+                |
+                p
+                    span.in-stock In Stock
+                    |
+                    span.dim-text=book.num
+                |
+                hr
+                |
+                p.price= book.price
+                |
+                form(action="/book/addpro",method="post")
+                    p
+                        span Qty:
+                        |
+                        input.qty(type='text', value='1' name='num')
+                        input.qty(type='hidden', value=book._id name='pro_id')
+                        input.qty(type='hidden', value=book.title name='pro_title')
+                        input.qty(type='hidden', value=book.price name='pro_price')
+                        input.qty(type='hidden', value=book.avatar name='pro_avatar')
+                    |
+                    button(type='submit').button.expanded Add to Cart
+            |
+            p.shipping Available for Free Ground Shipping &amp; Return
